@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="40.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="labirynth.View.MenuController">
+   <children>
+      <Text layoutX="301.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="menu" />
+   </children>
+</AnchorPane>
