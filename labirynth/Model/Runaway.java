@@ -21,6 +21,18 @@ public class Runaway extends Rectangle {
     private Canvas canvas;
     private GraphicsContext gc;
     private Labirynth labirynth;
+    public boolean goingLeft;
+    public boolean goingUp;
+    public boolean goingRight;
+    public boolean goingDown;
+    
+    public Runaway() {
+        goingLeft = true;
+        goingUp = false;
+        goingRight = false;
+        goingDown = false;
+    }
+
     
     public void setGraphicsContext (GraphicsContext gc) {
         this.gc = gc;

@@ -70,39 +70,112 @@ public class ContentController implements Initializable {
                         runaway.setCanvas(canvas);
                         runaway.setGraphicsContext(gc);
                         runaway.setLabirynth(labirynth);
-                        runaway.setWidth(40);
-                        runaway.setHeight(40);
-                        runaway.setX(walkway.getX());
-                        runaway.setY(walkway.getY());
+                        runaway.setWidth(30); //change
+                        runaway.setHeight(30); //change
+                        runaway.setX(walkway.getX()+5);
+                        runaway.setY(walkway.getY()+5);
                         runaway.draw();
                         startAnimation();
-                        
                     }
                 }
             }
         });
     }
     
+    //doesn`t work so far
+    private void tryTurn() {
+        //for Y movement
+        boolean tried = false;
+        if (runaway.getY()%30 == 0) {
+            runaway.goingLeft = false;
+            runaway.goingUp = true;
+            runaway.goingRight = false;
+            runaway.goingDown = false;
+        }
+        tried = true;
+    }
+    
+    private void goLeft(double speed) {
+        double currX = runaway.getX();
+        runaway.setX(currX-=speed);
+    }
+    private void goUp(double speed) {
+        double currY = runaway.getY();
+        runaway.setY(currY-=speed);
+    }
+    private void goRight(double speed) {
+        double currX = runaway.getX();
+        runaway.setX(currX+=speed);
+    }
+    private void goDown(double speed) {
+        double currY = runaway.getY();
+        runaway.setY(currY+=speed);
+    }
+    
     private void startAnimation() {
         loop = new AnimationTimer() {
-
-            double startX = runaway.getX();
-            double endX = 1000;
-            double y = runaway.getY();
-            double x = startX;
+            
+            double endX = 0; //place of animation stop
             double speed =1;
 
             @Override
             public void handle(long now) {
                 
-                runaway.setX(x+=speed);
+                    for (WallBlock wall : walls) {
+                        if (runaway.intersects(wall.getBoundsInLocal()) && runaway.goingUp) {
+                            System.out.println("collision");
+                            double currY = runaway.getY();
+                            runaway.setY(currY+5);
+                            runaway.goingUp = false;
+                            runaway.goingRight = false;
+                            runaway.goingDown = false;
+                            runaway.goingLeft = true;
+                        }
+                        if (runaway.intersects(wall.getBoundsInLocal()) && runaway.goingRight) {
+                            System.out.println("collision");
+                            double currX = runaway.getX();
+                            runaway.setX(currX-5);
+                            runaway.goingUp = true;
+                            runaway.goingRight = false;
+                            runaway.goingDown = false;
+                            runaway.goingLeft = false;
+                        }
+                        if (runaway.intersects(wall.getBoundsInLocal()) && runaway.goingDown) {
+                            System.out.println("collision");
+                            double currY = runaway.getY();
+                            runaway.setY(currY-5);
+                            runaway.goingUp = false;
+                            runaway.goingRight = true;
+                            runaway.goingDown = false;
+                            runaway.goingLeft = false;
+                        }
+                        if (runaway.intersects(wall.getBoundsInLocal()) && runaway.goingLeft) {
+                            System.out.println("collision");
+                            double currX = runaway.getX();
+                            runaway.setX(currX+5);
+                            runaway.goingUp = false;
+                            runaway.goingRight = false;
+                            runaway.goingDown = true;
+                            runaway.goingLeft = false;
+                        }
+                    }
+                    if (runaway.goingLeft) {
+                        goLeft(speed);
+                    }
+                    if (runaway.goingUp) {
+                        goUp(speed);
+                    }
+                    if (runaway.goingRight) {
+                        goRight(speed);
+                    }
+                    if (runaway.goingDown) {
+                        goDown(speed);
+                    }
+                
                 runaway.draw();
                 System.out.println(runaway.getX());
-                
-                
-                
 
-                if( x >= endX) {
+                if( runaway.getX() <= endX) {
                     loop.stop();
                 }
             }
