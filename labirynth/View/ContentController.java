@@ -21,11 +21,12 @@ public class ContentController implements Initializable {
     private WallBlock wB; //make a list of these
     
     public void init() {
+        labirynth = new Labirynth();
         gc = canvas.getGraphicsContext2D();
         //wB = new WallBlock(); //temp
         handleMouse();
-        prepareLabirynth();
-        drawLabirynth();
+        labirynth.prepareLabirynth();
+        labirynth.drawLabirynth(gc);
     }
     
     private void handleMouse() {
@@ -36,15 +37,6 @@ public class ContentController implements Initializable {
         });
     }
     
-    //temp - labirynth should be a model
-    private void prepareLabirynth() {
-        labirynth = new Labirynth();
-        labirynth.prepareLabirynth();
-    }
-    
-    private void drawLabirynth() {
-        labirynth.drawLabirynth(gc);
-    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
