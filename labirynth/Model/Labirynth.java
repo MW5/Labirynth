@@ -6,11 +6,8 @@
 package labirynth.Model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -18,6 +15,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class Labirynth {
     private ArrayList<WallBlock> walls;
+    private ArrayList<Walkway> walkways;
     private final int[][] maze;
     private final int mazeRows;
     private final int mazeCols;
@@ -26,6 +24,7 @@ public class Labirynth {
             mazeRows = 11;
             mazeCols = 16;
             walls = new ArrayList<WallBlock>();
+            walkways = new ArrayList<Walkway>();
             maze = new int[][]
             { {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
               {0,0,1,0,1,0,1,0,0,1,0,0,0,0,0,1},
@@ -38,7 +37,6 @@ public class Labirynth {
               {1,0,0,0,0,0,1,0,0,0,1,0,1,1,0,1},
               {1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1},
               {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-
             };
     }
 
@@ -49,18 +47,32 @@ public class Labirynth {
                     WallBlock wB = new WallBlock();
                     wB.setWidth(40);
                     wB.setHeight(40);
-                    wB.setPosX(j*(int)wB.getWidth());
-                    wB.setPosY(i*(int)wB.getHeight());
+                    wB.setX(j*(int)wB.getWidth());
+                    wB.setY(i*(int)wB.getHeight());
                     walls.add(wB);
+                } else {
+                    Walkway w = new Walkway();
+                    w.setWidth(40);
+                    w.setHeight(40);
+                    w.setX(j*(int)w.getWidth());
+                    w.setY(i*(int)w.getHeight());
+                    walkways.add(w);
                 }
             }
         }
     }
     
+    public ArrayList<WallBlock> getWalls() {
+        return walls;
+    }
+    public ArrayList<Walkway> getWalkways() {
+        return walkways;
+    }
+    
     public void drawLabirynth (GraphicsContext gc) {
         for (WallBlock wall : walls) {
             gc.setFill(Color.BLACK);
-            gc.fillRect(wall.getPosX(), wall.getPosY(), wall.getWidth(), wall.getHeight());
+            gc.fillRect(wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
         }
     }
 }

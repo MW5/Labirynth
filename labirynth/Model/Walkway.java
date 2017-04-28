@@ -8,5 +8,6 @@ package labirynth.Model;
 import javafx.scene.shape.Rectangle;
 
 
-public class WallBlock extends Rectangle {
+public class Walkway extends Rectangle {
 }
+
