@@ -24,6 +24,8 @@ public class Labirynth extends Application {
     public AnchorPane menu;
     public Canvas content;
     
+    
+    
     @Override
     public void start(Stage stage) throws Exception {
         initRoot();
@@ -35,6 +37,8 @@ public class Labirynth extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+
     
     public void initRoot() {
         try {

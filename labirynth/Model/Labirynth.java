@@ -69,7 +69,7 @@ public class Labirynth {
         return walkways;
     }
     
-    public void drawLabirynth (GraphicsContext gc) {
+    public void draw (GraphicsContext gc) {
         for (WallBlock wall : walls) {
             gc.setFill(Color.BLACK);
             gc.fillRect(wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
