@@ -13,14 +13,14 @@ import javafx.scene.paint.Color;
  *
  * @author mw5
  */
-public class Labirynth {
+public class Labirynth_model {
     private ArrayList<WallBlock> walls;
     private ArrayList<Walkway> walkways;
     private final int[][] maze;
     private final int mazeRows;
     private final int mazeCols;
 
-    public Labirynth() {
+    public Labirynth_model() {
             mazeRows = 11;
             mazeCols = 16;
             walls = new ArrayList<WallBlock>();
@@ -38,18 +38,6 @@ public class Labirynth {
               {1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1},
               {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
             };
-//            { {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-//              {1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1},
-//              {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-//              {1,1,1,1,1,1,0,0,0,1,1,1,0,1,1,1},
-//              {1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1},
-//              {1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1},
-//              {1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1},
-//              {1,0,0,0,1,1,0,0,0,1,1,1,0,0,1,1},
-//              {1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,1},
-//              {1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1},
-//              {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-//            };
     }
     
     public int[][] getMaze() {

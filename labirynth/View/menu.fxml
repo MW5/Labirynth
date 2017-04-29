@@ -7,16 +7,24 @@
 
 <AnchorPane id="menuPane" prefHeight="40.0" prefWidth="640.0" stylesheets="@../Style/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="labirynth.View.MenuController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="640.0">
+      <HBox alignment="BOTTOM_LEFT" prefHeight="40.0" prefWidth="640.0">
          <children>
-            <Button mnemonicParsing="false" text="Labirynt 1">
+            <Button mnemonicParsing="false" onAction="#handleStateChange_0" prefHeight="40.0" prefWidth="260.0" text="Labirynt 1">
                <HBox.margin>
-                  <Insets left="15.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Labirynt 2">
+            <Button id="roundedBtn" mnemonicParsing="false" onAction="#reset">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <HBox.margin>
-                  <Insets left="15.0" />
+                  <Insets bottom="2.5" left="42.5" right="42.5" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleStateChange_1" prefHeight="40.0" prefWidth="260.0" text="Labirynt 2">
+               <HBox.margin>
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
@@ -24,6 +32,5 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Button mnemonicParsing="false" text="Button" AnchorPane.rightAnchor="15.0" />
    </children>
 </AnchorPane>

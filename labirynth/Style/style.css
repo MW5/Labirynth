@@ -1,3 +1,18 @@
 #menuPane {
-    -fx-background-color: darkseagreen;
+    -fx-background-color: black;
+}
+#roundedBtn {
+    -fx-background-radius:  70px; 
+    -fx-min-width: 35px;
+    -fx-min-height: 35px;
+    -fx-max-width: 35px;
+    -fx-max-height: 35px;
+}
+#roundedBtn:hover {
+    -fx-background-color: red;
+    -fx-background-radius:  70px; 
+    -fx-min-width: 35px;
+    -fx-min-height: 35px;
+    -fx-max-width: 35px;
+    -fx-max-height: 35px;
 }

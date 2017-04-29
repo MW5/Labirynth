@@ -7,7 +7,10 @@ package labirynth.View;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import labirynth.Labirynth;
 
 /**
  * FXML Controller class
@@ -16,9 +19,26 @@ import javafx.fxml.Initializable;
  */
 public class MenuController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    public Labirynth labirynth;
+    
+    public void setLabirynth(Labirynth labirynth) {
+        this.labirynth = labirynth;
+    }
+    
+    @FXML
+    public void reset(ActionEvent action) {
+        labirynth.initContent();
+    }
+    @FXML
+    public void handleStateChange_0(ActionEvent action) {
+        labirynth.setState(0);
+        labirynth.initContent();
+    }
+    @FXML
+    public void handleStateChange_1(ActionEvent action) {
+        labirynth.setState(1);
+        labirynth.initContent();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

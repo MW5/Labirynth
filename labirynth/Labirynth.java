@@ -13,7 +13,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import labirynth.View.ContentController;
+import labirynth.View.Labirynth_1Controller;
+import labirynth.View.MenuController;
 
 /**
  *
@@ -24,10 +25,12 @@ public class Labirynth extends Application {
     public AnchorPane menu;
     public Canvas content;
     
+    private int currentState;
     
     
     @Override
     public void start(Stage stage) throws Exception {
+        this.currentState = 0;
         initRoot();
         initMenu();
         initContent();
@@ -38,8 +41,13 @@ public class Labirynth extends Application {
         stage.show();
     }
     
+    public int getState() {
+        return currentState;
+    }
+    public void setState(int state) {
+        this.currentState = state;
+    }
 
-    
     public void initRoot() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -56,6 +64,8 @@ public class Labirynth extends Application {
             loader.setLocation(getClass().getResource("View/menu.fxml"));
             menu = (AnchorPane) loader.load();
             root.setTop(menu);
+            MenuController controller = loader.getController();
+            controller.setLabirynth(this);
             
         } catch (IOException e) {
             e.printStackTrace(System.out);
@@ -64,21 +74,32 @@ public class Labirynth extends Application {
     }
     
     public void initContent() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("View/content.fxml"));
-            content = (Canvas) loader.load();
-            root.setBottom(content);
-            ContentController controller = loader.getController();
-            controller.init();
-        } catch (IOException e) {
-            e.printStackTrace(System.out);
+        if (currentState == 0) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("View/labirynth_1.fxml"));
+                content = (Canvas) loader.load();
+                root.setBottom(content);
+                Labirynth_1Controller controller = loader.getController();
+                controller.init();
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+        if (currentState == 1) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("View/labirynth_2.fxml"));
+                content = (Canvas) loader.load();
+                root.setBottom(content);
+                Labirynth_1Controller controller = loader.getController();
+                //controller.init();
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
